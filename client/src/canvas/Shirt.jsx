@@ -24,17 +24,21 @@ const Shirt = () => {
     <group key={stateString}>
       <mesh
         castShadow
+        receiveShadow
         geometry={nodes.T_Shirt_male.geometry}
         material={materials.lambert1}
         dispose={null}
       >
         {snap.isFullTexture && (
-          <Decal
+          <mesh
+            geometry={nodes.T_Shirt_male.geometry}
             position={[0, 0, 0]}
             rotation={[0, 0, 0]}
-            scale={1}
-            map={fullTexture}
-          />
+            scale={[1, 1, 1]}
+            receiveShadow
+          >
+            <meshStandardMaterial map={fullTexture} />
+          </mesh>
         )}
         {snap.isLogoTexture && (
           <Decal
