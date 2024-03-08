@@ -2,6 +2,7 @@ import React from "react";
 import { easing } from "maath";
 import { useSnapshot } from "valtio";
 import { useFrame } from "@react-three/fiber";
+import * as THREE from "three";
 // Decal meaning texture
 import { Decal, useGLTF, useTexture } from "@react-three/drei";
 
@@ -30,15 +31,7 @@ const Shirt = () => {
         dispose={null}
       >
         {snap.isFullTexture && (
-          <mesh
-            geometry={nodes.T_Shirt_male.geometry}
-            position={[0, 0, 0]}
-            rotation={[0, 0, 0]}
-            scale={[1, 1, 1]}
-            receiveShadow
-          >
-            <meshStandardMaterial map={fullTexture} />
-          </mesh>
+          <meshStandardMaterial map={fullTexture} side={THREE.DoubleSide} />
         )}
         {snap.isLogoTexture && (
           <Decal
